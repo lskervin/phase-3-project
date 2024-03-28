@@ -111,6 +111,7 @@ class User:
         CONN.commit()
 
     def delete(self):
+        
         """Delete the table row corresponding to the current User instance,
         delete the dictionary entry, and reassign id attribute"""
         sql = """
@@ -121,11 +122,13 @@ class User:
         CURSOR.execute(sql, (self.id,))
         CONN.commit()
         
+        
         # Delete the dictionary entry using id as the key
         del type(self).all[self.id]
 
         # Set the id to None
         self.id = None
+        
 
     @classmethod
     def get_all(cls):
@@ -153,25 +156,8 @@ class User:
 
 
 if __name__ == '__main__':
+
     User.create_table()
 
 
-
-    # john = User.create(first_name= 'John', last_name= 'Smith')
-    # emily = User.create(first_name = 'Emily', last_name = 'Johnson')
-    # michael = User.create(first_name = 'Michael' , last_name ='Williams')
-    # sarah = User.create(first_name = 'Sarah', last_name = 'Jones')
-    # christopher = User.create(first_name = 'Christopher', last_name = 'Brown')
-    # jessica = User.create(first_name = 'Jessica', last_name = 'Davis')
-    # matthew = User.create(first_name = 'Matthew', last_name = 'Miller')
-    # amanda = User.create(first_name = 'Amanda', last_name = 'Wilson')
-    # david = User.create(first_name = 'David', last_name = 'Moore')
-    # jennifer = User.create(first_name = 'Jennifer', last_name = 'Taylor')
-    # jc = User.create(first_name= 'John', last_name= 'Cena')
-    # brad = User.create(first_name= 'Brad', last_name= 'Pitt')
-
-    # User.user_list()
-    # User.drop_table()
-    # Username.drop_table()
-    # Password.drop_table()
 
