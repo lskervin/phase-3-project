@@ -89,7 +89,7 @@ class Username:
         while True:  # Loop indefinitely until a valid password is generated
             password_length = random.randint(1, 3)
             password = ''.join(random.choices(string.ascii_letters + string.digits, k=password_length))
-            if 0 < password_length <= 3:  # Check if the password length is valid
+            if password_length == 3:  # Check if the password length is valid
                 return password  # Return the password if valid
 
     def update(self):
@@ -103,6 +103,7 @@ class Username:
         CONN.commit()
 
     def delete(self):
+        
         """Delete the table row corresponding to the current Username instance,
         delete the dictionary entry, and reassign id attribute"""
 
@@ -119,6 +120,7 @@ class Username:
 
         # Set the id to None
         self.id = None
+        
 
     @classmethod
     def create(cls, username, user_id):
